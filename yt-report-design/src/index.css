@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* YouTube 2025 Report Design System
+   Retro aesthetic with grid pattern, solid colors, professional data viz */
+
+@layer base {
+  :root {
+    /* Core Colors - Retro Palette */
+    --background: 30 47% 90%; /* Beige #F5E6D3 */
+    --foreground: 164 50% 20%; /* Dark Teal */
+    
+    --card: 30 47% 92%;
+    --card-foreground: 164 50% 20%;
+    
+    --popover: 30 47% 94%;
+    --popover-foreground: 164 50% 20%;
+    
+    /* Primary: Orange #FF6B35 */
+    --primary: 16 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary: Dark Teal #1A4D3E */
+    --secondary: 164 50% 20%;
+    --secondary-foreground: 30 47% 95%;
+    
+    --muted: 30 30% 85%;
+    --muted-foreground: 164 30% 35%;
+    
+    /* Accent matches primary */
+    --accent: 16 100% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Grid lines - Light Brown */
+    --border: 30 25% 80%;
+    --input: 30 25% 85%;
+    --ring: 16 100% 60%;
+    
+    --radius: 1.5rem;
+    
+    /* Grid pattern */
+    --grid-color: 30 25% 80%;
+    --grid-size: 30px;
+    
+    /* Sidebar */
+    --sidebar-background: 164 50% 20%;
+    --sidebar-foreground: 30 47% 95%;
+    --sidebar-primary: 16 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 164 40% 25%;
+    --sidebar-accent-foreground: 30 47% 95%;
+    --sidebar-border: 164 40% 25%;
+    --sidebar-ring: 16 100% 60%;
+  }
+
+  .dark {
+    /* Dark mode: Deep gray background */
+    --background: 0 0% 14%; /* #242424 */
+    --foreground: 30 47% 90%;
+    
+    --card: 0 0% 18%;
+    --card-foreground: 30 47% 90%;
+    
+    --popover: 0 0% 16%;
+    --popover-foreground: 30 47% 90%;
+    
+    /* Primary stays Orange */
+    --primary: 16 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary: Lighter teal for dark mode */
+    --secondary: 164 40% 35%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 0 0% 22%;
+    --muted-foreground: 30 30% 70%;
+    
+    --accent: 16 100% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Grid lines - Darker */
+    --border: 0 0% 24%;
+    --input: 0 0% 22%;
+    --ring: 16 100% 60%;
+    
+    --grid-color: 0 0% 20%;
+    
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 30 47% 90%;
+    --sidebar-primary: 16 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 18%;
+    --sidebar-accent-foreground: 30 47% 90%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 16 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image: 
+      linear-gradient(hsl(var(--grid-color)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-color)) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  
+  .font-body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+  }
+  
+  .font-bold-body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+  }
+  
+  /* Pill/rounded shapes */
+  .pill {
+    @apply rounded-full px-6 py-2;
+  }
+  
+  .section-header {
+    @apply rounded-[50px] border-[3px] border-secondary px-8 py-4 inline-block;
+  }
+  
+  /* Retro badge style */
+  .badge-retro {
+    @apply bg-primary text-primary-foreground rounded-full px-4 py-1 text-sm font-bold-body uppercase tracking-wide;
+  }
+  
+  /* Scalloped border effect */
+  .scalloped-top {
+    background-image: radial-gradient(circle at 10px -5px, transparent 12px, hsl(var(--primary)) 13px);
+    background-size: 20px 20px;
+    background-position: 0 0;
+    padding-top: 15px;
+  }
+  
+  /* Card hover lift */
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px hsl(var(--secondary) / 0.2);
+  }
+  
+  /* Counter animation */
+  .counter-animate {
+    @apply tabular-nums;
+  }
+  
+  /* Hero title sizing */
+  .hero-title {
+    @apply text-6xl md:text-8xl lg:text-[120px] leading-none;
+  }
+  
+  /* Smooth theme transition */
+  .theme-transition {
+    @apply transition-colors duration-300;
+  }
+}
